@@ -18,7 +18,6 @@ prepare() {
 
     export LD_LIBRARY_PATH="/usr/lib/ onnxruntime-linux-x64-1.4.0/lib/"
     export number_of_threads=$(getconf _NPROCESSORS_ONLN)
-    pwd
     qmake -makefile
 }
 build() {
