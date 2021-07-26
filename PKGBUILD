@@ -8,7 +8,6 @@ source=("git+https://github.com/mdk97/aitrack-linux")
 license=("MIT")
 sha256sums=('SKIP')
 depends=("opencv" "fmt" "spdlog" "qt5-base" "qt5-x11extras" "openmp" "vtk")
-optdepends("droidcam")
 makedepends=("curl" "gzip" "tar" "make" "gcc" "opencv" "fmt" "spdlog" "qt5-base" "qt5-x11extras" "openmp" "vtk")
 install=aitrack.install
 prepare() {
@@ -27,24 +26,15 @@ build() {
     make -j$number_of_threads
 }
 package() {
-    mkdir "$pkgdir/usr"
-    mkdir "$pkgdir/usr/lib"
-    mkdir "$pkgdir/usr/bin"
-    mkdir "$pkgdir/home"
-    mkdir "$pkgdir/home/$USER"
-    chmod 700 "$pkgdir/home/$USER"
-    mkdir "$pkgdir/home/$USER/.local"
-    chmod 700 "$pkgdir/home/$USER/.local"
-    mkdir "$pkgdir/home/$USER/.local/share"
-    chmod 700 "$pkgdir/home/$USER/.local/share"
-    mkdir "$pkgdir/home/$USER/.local/share/aitrack"
-    chown $USER "$pkgdir/home/$USER/.local/share/aitrack"
-    chmod 770 "$pkgdir/home/$USER/.local/share/aitrack"
-    mkdir "$pkgdir/home/$USER/.local/share/aitrack/models"
-    chown $USER "$pkgdir/home/$USER/.local/share/aitrack/models"
-    chmod 770 "$pkgdir/home/$USER/.local/share/aitrack/models" 
+    install -d "$pkgdir/usr/lib"
+    install -d "$pkgdir/usr/bin"
+    install -d $USER "$pkgdir/home/$USER" -o $USER -m 700
+    install -d $USER "$pkgdir/home/$USER/.local" -o $USER -m 700
+    install -d $USER "$pkgdir/home/$USER/.local/share" -o $USER -m 700
+    install -d $USER "$pkgdir/home/$USER/.local/share/aitrack" -o $USER -m 770
+    install -d "$pkgdir/home/$USER/.local/share/aitrack/models" -o $USER -m 770
     cd "$srcdir/${pkgname}-linux"
-    cp onnxruntime-linux-x64-1.4.0/lib/libonnxruntime.so.1.4.0 "$pkgdir/usr/lib/"
-    cp aitrack "$pkgdir/usr/bin/"
-    cp models/* "$pkgdir/home/$USER/.local/share/aitrack/models/"
+    install onnxruntime-linux-x64-1.4.0/lib/libonnxruntime.so.1.4.0 "$pkgdir/usr/lib/libonnxruntime.so.1.4.0"
+    install aitrack "$pkgdir/usr/bin/aitrack"
+    install models/* "$pkgdir/home/$USER/.local/share/aitrack/models/" -o $USER -m 440
 }
