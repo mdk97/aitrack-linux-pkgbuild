@@ -16,7 +16,6 @@ prepare() {
     gunzip onnxruntime-linux-x64-1.4.0.tgz
     tar --extract -f onnxruntime-linux-x64-1.4.0.tar
 
-    export LD_LIBRARY_PATH="/usr/lib/ onnxruntime-linux-x64-1.4.0/lib/"
     export number_of_threads=$(getconf _NPROCESSORS_ONLN)
     qmake -makefile
 }
