@@ -26,13 +26,10 @@ build() {
 package() {
     install -d "$pkgdir/usr/lib"
     install -d "$pkgdir/usr/bin"
-    install -d $USER "$pkgdir/home/$USER" -o $USER -m 700
-    install -d $USER "$pkgdir/home/$USER/.local" -o $USER -m 700
-    install -d $USER "$pkgdir/home/$USER/.local/share" -o $USER -m 700
-    install -d $USER "$pkgdir/home/$USER/.local/share/aitrack" -o $USER -m 750
-    install -d "$pkgdir/home/$USER/.local/share/aitrack/models" -o $USER -m 750
+    install -d "$pkgdir/usr/share/aitrack/"
+    install -d "$pkgdir/usr/share/aitrack/models"
     cd "$srcdir/${pkgname}-linux"
     install onnxruntime-linux-x64-1.4.0/lib/libonnxruntime.so.1.4.0 "$pkgdir/usr/lib/libonnxruntime.so.1.4.0"
     install aitrack "$pkgdir/usr/bin/aitrack"
-    install models/* "$pkgdir/home/$USER/.local/share/aitrack/models/" -o $USER -m 440
+    install models/* "$pkgdir/usr/share/aitrack/models/"
 }
