@@ -7,7 +7,7 @@ url="https://github.com/mdk97/aitrack-linux"
 source=("git+https://github.com/mdk97/aitrack-linux")
 license=("MIT")
 sha256sums=('SKIP')
-depends=("opencv" "fmt" "spdlog" "qt5-base" "qt5-x11extras" "openmp" "vtk")
+depends=("opencv" "fmt" "spdlog" "qt5-base" "qt5-x11extras" "openmp" "vtk" "glew" "hdf5")
 makedepends=("curl" "gzip" "tar" "make" "gcc" "opencv" "fmt" "spdlog" "qt5-base" "qt5-x11extras" "openmp" "vtk")
 install=aitrack.install
 prepare() {
