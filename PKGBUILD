@@ -1,5 +1,5 @@
 pkgname="aitrack"
-pkgver="0.6.5_alpha"
+pkgver="0.6.5_1_alpha"
 pkgrel="1"
 pkgdesc="A 6-Degree of Freedom headtracker designed to work alongside Opentrack for its use in simulators/games."
 arch=("x86_64")
@@ -8,7 +8,7 @@ source=("git+https://github.com/mdk97/aitrack-linux")
 license=("MIT")
 sha256sums=('SKIP')
 depends=("opencv" "fmt" "spdlog" "qt5-base" "qt5-x11extras" "openmp" "vtk" "glew" "hdf5" "pugixml")
-makedepends=("curl" "gzip" "tar" "make" "gcc" "opencv" "fmt" "spdlog" "qt5-base" "qt5-x11extras" "openmp" "vtk")
+makedepends=("curl" "gzip" "tar" "make" "gcc" "opencv" "fmt" "spdlog" "qt5-base" "qt5-x11extras" "openmp" "vtk" "jsoncpp")
 install=aitrack.install
 prepare() {
     cd "$srcdir/${pkgname}-linux"
