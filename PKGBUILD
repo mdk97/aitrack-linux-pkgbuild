@@ -1,5 +1,5 @@
 pkgname="aitrack"
-pkgver="0.6.5_1_alpha"
+pkgver="0.7.1_1_alpha"
 pkgrel="1"
 pkgdesc="A 6-Degree of Freedom headtracker designed to work alongside Opentrack for its use in simulators/games."
 arch=("x86_64")
